@@ -3,21 +3,24 @@
         <div class="col-lg-12">
             <table class="table table-responsive">
                 <tr>
-                    <th>
+                    <th ng-click="column_sort('user')">
                         Username
-                        <span class="glyphicon" ng-class="class"  ng-click="column_sort('user')"></span>
-                        <span class="glyphicon" ng-class="class"  ng-click="column_sort('user')"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-hide="sort=='user'&&order=='asc'"></span>
+                        <span class="glyphicon glyphicon-arrow-down"  ng-hide="sort=='user'&&order=='desc'"></span>
                     </th>
-                    <th>
+                    <th ng-click="column_sort('name')">
                         Description
-                        <span class="glyphicon" ng-class="class"  ng-click="column_sort('name')"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-hide="sort=='name'&&order=='asc'"></span>
+                        <span class="glyphicon glyphicon-arrow-down"  ng-hide="sort=='name'&&order=='desc'"></span>
                     </th>
-                    <th>
+                    <th ng-click="column_sort('day')">
                         Date
-                        <span class="glyphicon" ng-class="class"  ng-click="column_sort('day')"></span>
+                        <span class="glyphicon glyphicon-arrow-up" ng-hide="sort=='day'&&order=='asc'"></span>
+                        <span class="glyphicon glyphicon-arrow-down"  ng-hide="sort=='day'&&order=='desc'"></span>
                     </th>
-                    <th>Amount
-                        <span class="glyphicon"  ng-class="class"  ng-click="column_sort('amount')"></span>
+                    <th ng-click="column_sort('amount')">Amount
+                        <span class="glyphicon glyphicon-arrow-up" ng-hide="sort=='amount'&&order=='asc'"></span>
+                        <span class="glyphicon glyphicon-arrow-down"  ng-hide="sort=='amount'&&order=='desc'"></span>
                     </th>
                 </tr>
                 <tr ng-repeat="row in expenses">

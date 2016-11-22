@@ -5,6 +5,14 @@ window[appName].controller('editable_controller', function ($rootScope, $scope, 
 
     $rootScope.title = "Expenses";
 
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd',
+        widgetPositioning: {
+            horizontal: 'right',
+            vertical: 'bottom'
+        }
+    });
+
     $scope.call_data = function () {
 
         http.Requests("get", "/api/expense/editable/", "").success(function (response) {
