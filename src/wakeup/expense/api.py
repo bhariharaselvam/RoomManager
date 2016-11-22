@@ -5,6 +5,11 @@ from rest_framework import status
 from .models import *
 from django.contrib.auth import get_user_model
 from django.db.models import Sum
+import datetime
+
+d = datetime.date.today()
+month = d.month
+year = d.year
 
 
 
@@ -50,7 +55,7 @@ class ExpenseView(ViewSet):
 
             if order=="desc":
                 sort="-"+sort
-            for obj in DailyExpenses.objects.all().order_by(sort):
+            for obj in DailyExpenses.objects.all().filter(day__month=month,day__year=year).order_by(sort):
                 result.append({"id":obj.id,"date":obj.day,"amount":obj.amount,"description":obj.name,"user":obj.user.username})
             return Response(result)
 
@@ -65,6 +70,7 @@ class ExpenseView(ViewSet):
 class EditableView(ViewSet):
     base_url = r'/editable'
     base_name = ''
+
 
     def create(self, request):
         if not request.user.is_authenticated():
@@ -95,7 +101,7 @@ class EditableView(ViewSet):
 
         if request.method == "GET":
             result = []
-            for obj in DailyExpenses.objects.all().filter(user=request.user):
+            for obj in DailyExpenses.objects.all().filter(user=request.user,day__month=month,day__year=year):
                 result.append({"id":obj.id,"date":obj.day,"amount":obj.amount,"description":obj.name,"user":obj.user.username})
             return Response(result)
 
@@ -117,6 +123,8 @@ class EditableView(ViewSet):
             if expense.user == request.user:
                 expense.delete()
                 return Response({"result": "Amount removed successfully", "status": True})
+            else:
+                return Response(status=status.HTTP_401_UNAUTHORIZED)
         except Exception as e:
             return Response({"result": "Amount was not removed", "status": False})
 
@@ -167,7 +175,7 @@ class AggregateUser(ViewSet):
             User = get_user_model()
             result = []
             for user in User.objects.all():
-                agg=DailyExpenses.objects.filter(user=user).aggregate(Sum('amount'))
+                agg=DailyExpenses.objects.filter(user=user,day__month=month,day__year=year).aggregate(Sum('amount'))
                 #print count['amount__sum']
                 count = agg['amount__sum'] if agg['amount__sum'] else 0
                 result.append({"name":user.username,"y":count})
@@ -217,8 +225,20 @@ class PaymentView(ViewSet):
     def retrieve(self, request, pk=None):
         if not request.user.is_authenticated():
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-        obj = DailyExpenses.objects.get(id=pk)
+        obj = StaticPayments.objects.get(id=pk)
         return Response({"id":obj.id,"amount":obj.amount,"description":obj.name})
+
+    def destroy(self, request, pk=None):
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        try:
+            expense = StaticPayments.objects.filter(id=pk)[0]
+            expense.delete()
+            return Response({"result": "Amount removed successfully", "status": True})
+        except Exception as e:
+            print str(e)
+            return Response({"result": "Amount was not removed", "status": False})
 
     @csrf_exempt
     def partial_update(self, request, pk=None):
@@ -231,7 +251,7 @@ class PaymentView(ViewSet):
             name = data['name'] if 'name' in data.keys() else ""
             amount = data['amount'] if 'amount' in data.keys() else 0
 
-            obj = DailyExpenses.objects.get(id=pk)
+            obj = StaticPayments.objects.get(id=pk)
             if amount != 0 :
                 obj.amount = amount
             if name != "" :

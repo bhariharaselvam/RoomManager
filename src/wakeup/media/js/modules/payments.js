@@ -45,7 +45,6 @@ window[appName].controller('payment_controller', function ($rootScope, $scope, $
 
                 $scope.response = response.result;
 
-
             });
         } else {
             var url = "/api/expense/payment/" + $scope.id + "/";

@@ -1,18 +1,25 @@
 /**
  * Created by hariharaselvam on 11/12/16.
  */
-window[appName].controller('dashboard_controller', function ($rootScope, $scope, $state, http) {
+window[appName].controller('dashboard_controller', function ($rootScope, $scope, $state, http,message) {
 
     $rootScope.title = "Dashboard";
     $scope.dashboard = {
         "page": "Dashboard"
     };
 
+    $('#date').datepicker({
+        format: 'yyyy-mm-dd',
+        widgetPositioning: {
+            horizontal: 'right',
+            vertical: 'bottom'
+        }
+    });
+
     $scope.add_amount = function () {
         var param = {"name": $scope.desc, "date": $scope.date, "amount": $scope.amount};
         http.Requests("post", "/api/expense/expense/", param).success(function (response) {
-
-            $scope.response = response.result;
+            $("#alert_box").html(message.alert(response.status,response.result));
             $scope.get_chart();
 
         });
