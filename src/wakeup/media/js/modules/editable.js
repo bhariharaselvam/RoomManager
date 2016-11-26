@@ -3,7 +3,7 @@
  */
 window[appName].controller('editable_controller', function ($rootScope, $scope, $state, http) {
 
-    $rootScope.title = "Expenses";
+    $rootScope.title = "My Expenses | Wakeup | RoomManager";
 
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',

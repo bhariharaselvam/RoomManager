@@ -32,8 +32,8 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
         });
 
     $stateProvider
-        .state('payments', {
-            url: '/payments',
+        .state('static', {
+            url: '/static',
             templateUrl: '/media/js/modules/payments.html',
             controller: 'payment_controller'
         });

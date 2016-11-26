@@ -3,7 +3,7 @@
  */
 window[appName].controller('expenses_controller', function ($rootScope, $scope, $state, http) {
 
-    $rootScope.title = "Expenses";
+    $rootScope.title = "Expenses | Wakeup | RoomManager";
 
     $scope.sort = "day";
     $scope.order = "asc";

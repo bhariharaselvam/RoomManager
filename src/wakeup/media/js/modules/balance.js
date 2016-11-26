@@ -3,7 +3,7 @@
  */
 window[appName].controller('balance_controller', function ($rootScope, $scope, $state, http) {
 
-    $rootScope.title = "Balance";
+    $rootScope.title = "Balance | Wakeup | RoomManager";
 
 
 

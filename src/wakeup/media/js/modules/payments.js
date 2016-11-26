@@ -6,7 +6,7 @@
  */
 window[appName].controller('payment_controller', function ($rootScope, $scope, $state, http) {
 
-    $rootScope.title = "Expenses";
+    $rootScope.title = "Static Payments | Wakeup | RoomManager";
     $scope.id = "0";
     $scope.payment = [];
     $scope.call_data = function () {

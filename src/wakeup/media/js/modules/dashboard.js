@@ -3,7 +3,7 @@
  */
 window[appName].controller('dashboard_controller', function ($rootScope, $scope, $state, http,message) {
 
-    $rootScope.title = "Dashboard";
+    $rootScope.title = "Dashboard | Wakeup | RoomManager";
     $scope.dashboard = {
         "page": "Dashboard"
     };
