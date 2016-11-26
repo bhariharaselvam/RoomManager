@@ -265,5 +265,40 @@ class PaymentView(ViewSet):
             print str(e)
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+class BalanceSheer(ViewSet):
+    base_url = r'/balance'
+    base_name = ''
+
+    def create(self, request):
+        return Response(None, status=status.HTTP_400_BAD_REQUEST)
+
+    def list(self, request):
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        if request.method == "GET":
+            d = datetime.date.today()
+            month = d.month
+            year = d.year
+            month = month - 1
+            if month == 0:
+                month = 12
+                year = year - 1
+            result = []
+            for balance in MonthlyUserDistribution.objects.all().filter(month=month,year=year):
+                row = {}
+                row['prepaid'] = balance.prepaid
+                row['yetopay'] = balance.yettopay
+                row['username'] = balance.user.username
+                result.append(row)
+            payements = []
+            for payment in MonthlyBudget.objects.all().filter(month=month,year=year):
+                payements.append({'name':payment.name,'amount':payment.amount})
+            return Response({'payments':payements,'users':result})
+
+    def retrieve(self, request, code=None):
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
 
 

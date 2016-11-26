@@ -26,4 +26,11 @@ class MonthlyUserDistribution(models.Model):
     prepaid = models.IntegerField()
     yettopay = models.IntegerField()
 
+class MonthlyBudget(models.Model):
+    month = models.IntegerField()
+    year = models.IntegerField()
+    name = models.CharField(max_length=100)
+    amount = models.IntegerField()
+
+
 
