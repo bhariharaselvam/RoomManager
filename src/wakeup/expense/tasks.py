@@ -38,7 +38,8 @@ def calculate(month,year):
         obj.prepaid = prepaid
         obj.yettopay = average - prepaid
         obj.save()
-
+    for sp in MonthlyBudget.objects.all().filter(month=month,year=year):
+        sp.delete()
     for sp in StaticPayments.objects.all():
         MonthlyBudget.objects.create(month=month,year=year,name=sp.name,amount=sp.amount)
     MonthlyBudget.objects.create(month=month,year=year,name="total_static_payments",amount=total_static_payments['amount__sum'])
