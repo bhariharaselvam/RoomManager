@@ -19,4 +19,11 @@ class StaticPayments(models.Model):
     name = models.CharField(max_length=100)
     amount = models.IntegerField()
 
+class MonthlyUserDistribution(models.Model):
+    user = models.ForeignKey(User)
+    month = models.IntegerField()
+    year = models.IntegerField()
+    prepaid = models.IntegerField()
+    yettopay = models.IntegerField()
+
 
