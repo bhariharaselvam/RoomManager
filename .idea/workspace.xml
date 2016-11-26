@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c9011204-310c-4070-ac6b-8eb2f9f48e7e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/wakeup/expense/tasks.py" afterPath="$PROJECT_DIR$/src/wakeup/expense/tasks.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/wakeup/ui/templates/index.html" afterPath="$PROJECT_DIR$/src/wakeup/ui/templates/index.html" />
     </list>
     <ignored path="RoomExpences.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tasks.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/wakeup/expense/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.3340564">
+            <state vertical-scroll-proportion="0.0">
               <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
@@ -109,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/wakeup/ui/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.4583335">
-              <caret line="40" column="34" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.034324944">
+              <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -184,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/wakeup/expense/models.py" />
         <option value="$PROJECT_DIR$/src/wakeup/expense/api.py" />
         <option value="$PROJECT_DIR$/src/wakeup/media/js/modules/balance.html" />
-        <option value="$PROJECT_DIR$/src/wakeup/ui/templates/index.html" />
         <option value="$PROJECT_DIR$/src/wakeup/media/js/angular_app.js" />
         <option value="$PROJECT_DIR$/src/wakeup/media/js/modules/balance.js" />
         <option value="$PROJECT_DIR$/src/wakeup/media/js/modules/dashboard.js" />
@@ -192,6 +191,7 @@
         <option value="$PROJECT_DIR$/src/wakeup/media/js/modules/editable.js" />
         <option value="$PROJECT_DIR$/src/wakeup/media/js/modules/payments.js" />
         <option value="$PROJECT_DIR$/src/wakeup/expense/tasks.py" />
+        <option value="$PROJECT_DIR$/src/wakeup/ui/templates/index.html" />
       </list>
     </option>
   </component>
@@ -999,7 +999,13 @@
       <option name="project" value="LOCAL" />
       <updated>1480141987557</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="dynamic urls">
+      <created>1480142100482</created>
+      <option name="number" value="00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1480142100482</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1369,14 +1375,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/wakeup/ui/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.4583335">
-          <caret line="40" column="34" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/wakeup/media/js/angular_app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1449,11 +1447,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/wakeup/expense/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.3340564">
+        <state vertical-scroll-proportion="0.0">
           <caret line="41" column="19" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/wakeup/ui/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.034324944">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
