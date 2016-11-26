@@ -15,7 +15,7 @@ window[appName].controller('expenses_controller', function ($rootScope, $scope, 
             $scope.expenses = response;
 
         });
-    }
+    };
 
     $scope.column_sort = function(col){
         if($scope.order=="asc")

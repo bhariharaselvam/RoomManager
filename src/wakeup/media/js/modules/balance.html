@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="breadcrumb">
+                Payments
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <table class="table table-responsive">
+                <tr ng-repeat="p in payments">
+                    <td>
+                        <b>{{ p.description }}</b>
+
+                    </td>
+                    <td>
+                        {{ p.amount }} Rs
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-8">
+            <table class="table table-responsive">
+                <tr>
+                    <th>Username</th>
+                    <th>Previouse expenditures</th>
+                    <th>Amount to pay</th>
+                </tr>
+                <tr ng-repeat="u in users">
+                    <td>
+                        <b>{{ u.username }}</b>
+                    </td>
+                    <td>
+                        {{ u.prepaid }} Rs
+                    </td>
+                    <td>
+                        {{ u.yetopay }} Rs
+                    </td>
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>

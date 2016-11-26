@@ -38,6 +38,13 @@ window[appName].config(function ($stateProvider, $urlRouterProvider, $httpProvid
             controller: 'payment_controller'
         });
 
+    $stateProvider
+        .state('balance', {
+            url: '/balance',
+            templateUrl: '/media/js/modules/balance.html',
+            controller: 'balance_controller'
+        });
+
     $httpProvider.defaults.xsrfCookieName = 'csrftoken';
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
 });
