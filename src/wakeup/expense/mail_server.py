@@ -11,7 +11,7 @@ class Mail_service:
 		self.website='smtp.gmail.com'
 		self.port='587'
 		self.username='selvamsamy2@gmail.com'
-		self.password='nineONEzero'
+		self.password=''
 
 
 		self.server=None
