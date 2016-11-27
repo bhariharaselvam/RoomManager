@@ -2,6 +2,7 @@ import datetime
 from django.db.models import Sum
 from django.contrib.auth import get_user_model
 from .models import *
+from .mail_server import *
 d = datetime.date.today()
 month = d.month
 
@@ -48,6 +49,34 @@ def calculate(month,year):
     MonthlyBudget.objects.create(month=month,year=year,name="average_to_users",amount=average)
 
     return True
+
+
+def reports(month,year):
+    users = get_users(month,year)
+    User = get_user_model()
+    receivers = []
+    for user in users:
+        user_obj=User.objects.get(id=user[0])
+        receivers.append(user_obj.email)
+
+    sm=Mail_service()
+    sm.add_receiver(receivers)
+    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    subject = months[month-1]+" "+str(year)+" Room Accounts"
+    content = "<table>"
+    for pay in MonthlyBudget.objects.all().filter(month=month,year=year):
+        content += "<tr><th>"+pay.name+"<th><td>:</td><td>"+str(pay.amount)+"</td></tr>"
+    content += "</table>"
+    content += "<br><br>"
+    content += "<table>"
+    content += "<tr><th>Username</th><th>Last month expense</th><th>Payement</th></tr>"
+    for user in MonthlyUserDistribution.objects.all().filter(month=month,year=year):
+        content += "<tr><td>"+user.user.username+"</td><td>"+str(user.prepaid)+"</td><td>"+str(user.yettopay)+"</td></tr>"
+    content += "</table>"
+    sm.add_message(subject,content)
+    sm.send_mail()
+
+
 
 
 
