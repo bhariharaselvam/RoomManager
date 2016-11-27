@@ -3,6 +3,7 @@ from django.db.models import Sum
 from django.contrib.auth import get_user_model
 from .models import *
 from .mail_server import *
+from .sms_server import *
 d = datetime.date.today()
 month = d.month
 
@@ -75,6 +76,20 @@ def reports(month,year):
     content += "</table>"
     sm.add_message(subject,content)
     sm.send_mail()
+
+
+def alerts(month,year):
+    for user in MonthlyUserDistribution.objects.all().filter(month=month,year=year):
+        username = str(user.user.first_name)
+        phone = str(user.user.last_name)
+        lastmonth = str(user.prepaid)+" Rs"
+        thismonth = str(user.yettopay)+" Rs"
+        message = "Hi, "+username+", you have spend "+lastmonth+" lastmonth and you have to pay "+thismonth
+        print sendsms("9994168966","",phone,message)
+
+
+
+
 
 
 
